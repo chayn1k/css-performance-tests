@@ -21,13 +21,15 @@
 			;(function TimeThisMother() {
 				window.onload = function(){
 					setTimeout(function(){
-					var t = performance.timing;
+						var t = performance.timing;
+						console.time('create 200 000 elements');
 						for (var index = 0; index < 200000; index++) {
 							var makeDiv = document.createElement("a");
 							makeDiv.classList.add('a-a');
 							makeDiv.textContent = 'this is a number ' + index;
 							document.body.appendChild(makeDiv);
 						}
+						console.timeEnd('create 200 000 elements');
 						console.log("Speed of creation is: " + ( (t.loadEventEnd - t.responseEnd) / 1000) + " seconds");
 					}, 0);
 				};

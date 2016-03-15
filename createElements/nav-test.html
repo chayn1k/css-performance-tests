@@ -20,13 +20,15 @@
 			;(function TimeThisMother() {
 				window.onload = function(){
 					setTimeout(function(){
-					var t = performance.timing;
+						var t = performance.timing;
+						console.time('create 200 000 elements');
 						for (var index = 0; index < 200000; index++) {
 							var makeDiv = document.createElement("nav");
 							makeDiv.classList.add('a-nav');
 							makeDiv.textContent = 'this is nav number ' + index;
 							document.body.appendChild(makeDiv);
 						}
+						console.timeEnd('create 200 000 elements');
 						console.log("Speed of creation is: " + ( (t.loadEventEnd - t.responseEnd) / 100) + " seconds");
 					}, 0);
 				};
